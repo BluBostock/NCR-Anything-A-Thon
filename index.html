@@ -8,66 +8,98 @@
 </head>
 <body class="font-sans bg-gray-50 text-gray-900">
 
-    <!-- Hero Section -->
-    <section class="bg-[#47004d] text-white py-20">
-        <div class="container mx-auto px-6 text-center">
-            <h1 class="text-5xl font-bold mb-6">Let’s Make Gender Equality a Reality</h1>
-            <p class="text-xl mb-8">Enter the name of a company and discover how they're doing on gender pay equality.</p>
-            <form class="flex justify-center items-center space-x-4">
-                <input type="text" id="companyName" class="px-6 py-3 w-full sm:w-1/2 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#47004d]" placeholder="Company name..." />
-                <button type="button" onclick="fetchGenderGapData()" class="bg-[#47004d] text-white px-8 py-3 rounded-full hover:bg-[#5c0066] transition">Get Gender Gap Data</button>
-            </form>
-        </div>
-    </section>
+<!-- Hero Section -->
+<section class="bg-[#47004d] text-white py-20">
+    <div class="container mx-auto px-6 text-center">
+        <h1 class="text-5xl font-bold mb-6">Let’s Make Gender Equality a Reality</h1>
+        <p class="text-xl mb-8">Enter the name of a company and discover how they're doing on gender pay equality.</p>
+        <form class="flex justify-center items-center space-x-4">
+            <input type="text" id="companyName" class="px-6 py-3 w-full sm:w-1/2 rounded-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#47004d]" placeholder="Company name..." />
+            <button type="button" onclick="fetchGenderGapData()" class="bg-[#47004d] text-white px-8 py-3 rounded-full hover:bg-[#5c0066] transition">Get Gender Gap Data</button>
+        </form>
+    </div>
+</section>
 
-    <!-- Company Data Section -->
-    <section id="company-data" class="container mx-auto px-6 py-16">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl font-semibold mb-4">Company Gender Pay Gap</h2>
-            <p class="text-lg text-gray-600">Here’s what we found about the company's pay gap, diversity, and more.</p>
-        </div>
-        <div id="company-info" class="bg-white shadow-xl rounded-2xl p-8 text-center">
-            <h3 class="text-2xl font-semibold mb-4" id="company-title">Company: [Company Name]</h3>
-            <p class="text-xl mb-2">Average Gender Pay Gap: <span id="pay-gap">Loading...</span></p>
-            <p class="text-xl mb-2">Women in Senior Roles: <span id="senior-roles">Loading...</span></p>
-            <p class="text-xl mb-2">Diversity Index: <span id="diversity-index">Loading...</span></p>
-        </div>
-    </section>
+<!-- Company Data Section -->
+<section id="company-data" class="container mx-auto px-6 py-16">
+    <div class="text-center mb-12">
+        <h2 class="text-3xl font-semibold mb-4">Company Gender Pay Gap</h2>
+        <p class="text-lg text-gray-600">Here’s what we found about the company's pay gap.</p>
+    </div>
+    <div id="company-info" class="bg-white shadow-xl rounded-2xl p-8 text-center">
+        <h3 class="text-2xl font-semibold mb-4" id="company-title">Company: [Company Name]</h3>
+        <p class="text-xl mb-2">Gender Pay Gap Info: <span id="pay-gap">Loading...</span></p>
+    </div>
+</section>
 
-    <!-- General Gender Pay Gap Information -->
-    <section class="bg-[#f8f4f9] py-16">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-3xl font-semibold mb-6 text-[#47004d]">Key Gender Equality Insights</h2>
-            <p class="text-lg mb-6 text-gray-700">Here’s a quick look at the state of gender pay gaps globally and what it means for everyone.</p>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Global Gender Pay Gap</h3>
-                    <p class="text-lg">On average, women globally earn 20% less than men.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Women in Leadership</h3>
-                    <p class="text-lg">Only 7% of Fortune 500 CEOs are women.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow-md">
-                    <h3 class="text-xl font-semibold mb-4">Female Workers in STEM</h3>
-                    <p class="text-lg">Women hold just 28% of jobs in STEM fields.</p>
-                </div>
+<!-- General Gender Pay Gap Information -->
+<section class="bg-[#f8f4f9] py-16">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-semibold mb-6 text-[#47004d]">Key Gender Equality Insights</h2>
+        <p class="text-lg mb-6 text-gray-700">Here’s a quick look at the state of gender pay gaps globally and what it means for everyone.</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-xl font-semibold mb-4">Global Gender Pay Gap</h3>
+                <p class="text-lg">On average, women globally earn 20% less than men.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-xl font-semibold mb-4">Women in Leadership</h3>
+                <p class="text-lg">Only 7% of Fortune 500 CEOs are women.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-xl font-semibold mb-4">Female Workers in STEM</h3>
+                <p class="text-lg">Women hold just 28% of jobs in STEM fields.</p>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="bg-[#47004d] text-white py-8">
-        <div class="container mx-auto text-center">
-            <p class="text-lg">&copy; 2024 Gender Equality Initiative. All rights reserved.</p>
+<!-- Actionable Tips Section -->
+<section class="py-16 bg-gray-100">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl font-semibold mb-6 text-[#47004d]">Actionable Tips to Combat Gender Inequality</h2>
+        <p class="text-lg mb-8 text-gray-700">Here are some practical steps organizations and individuals can take to close the gender pay gap:</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-xl font-semibold mb-4">1. Pay Transparency</h3>
+                <p class="text-lg">Encourage organizations to publish salary ranges and ensure equal pay for equal work.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-xl font-semibold mb-4">2. Flexible Work Policies</h3>
+                <p class="text-lg">Support flexible work arrangements to accommodate diverse needs, including parental leave for all genders.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-xl font-semibold mb-4">3. Invest in Training</h3>
+                <p class="text-lg">Provide leadership training and mentorship programs to empower women in the workplace.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-xl font-semibold mb-4">4. Encourage Diverse Hiring</h3>
+                <p class="text-lg">Adopt practices like blind hiring to eliminate unconscious bias in recruitment.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-xl font-semibold mb-4">5. Measure Progress</h3>
+                <p class="text-lg">Track gender diversity metrics and set measurable goals for improvement.</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-xl font-semibold mb-4">6. Challenge Stereotypes</h3>
+                <p class="text-lg">Educate teams about gender biases and create an inclusive culture that values diversity.</p>
+            </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <script>
+<!-- Footer -->
+<footer class="bg-[#47004d] text-white py-8">
+    <div class="container mx-auto text-center">
+        <p class="text-lg">2024 PayParity. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
     // Function to fetch data from the backend
     function fetchGenderGapData() {
         const companyName = document.getElementById("companyName").value;
-        
+
         if (companyName) {
             // Make an AJAX request to the Flask API
             fetch(`http://127.0.0.1:5000/get_gender_gap_data?company_name=${companyName}`)
@@ -79,8 +111,6 @@
                     } else {
                         document.getElementById("company-title").textContent = `Company: ${data.company_name}`;
                         document.getElementById("pay-gap").textContent = data.pay_gap;
-                        document.getElementById("senior-roles").textContent = data.senior_roles;
-                        document.getElementById("diversity-index").textContent = data.diversity_index;
                     }
                 })
                 .catch(error => {
@@ -91,7 +121,7 @@
             alert("Please enter a company name.");
         }
     }
-    </script>
+</script>
 
 </body>
 </html>
