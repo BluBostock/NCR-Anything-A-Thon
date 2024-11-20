@@ -102,15 +102,19 @@
 
         if (companyName) {
             // Make an AJAX request to the Flask API
-            fetch(`http://127.0.0.1:5000/get_gender_gap_data?company_name=${companyName}`)
-                .then(response => response.json())
+            url = `http://127.0.0.1:5000/get_company_workforce_demographic?company_name=${companyName}`;
+            console.log(url);
+            fetch(url)
+            
+                .then(response => response.text())
                 .then(data => {
+                    console.log(data);
                     // Update the page with the fetched data
                     if (data.error) {
                         alert(data.error);
                     } else {
-                        document.getElementById("company-title").textContent = `Company: ${data.company_name}`;
-                        document.getElementById("pay-gap").textContent = data.pay_gap;
+                        document.getElementById("company-title").textContent = `Company: ${companyName}`;
+                        document.getElementById("pay-gap").textContent = data;
                     }
                 })
                 .catch(error => {

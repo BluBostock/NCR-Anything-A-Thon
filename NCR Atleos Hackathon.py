@@ -2,10 +2,17 @@ import random
 import requests
 from bs4 import BeautifulSoup
 
+from flask import Flask, request
+from flask_cors import CORS, cross_origin
+app = Flask(__name__)
+CORS(app, support_credentials=True)
 
-def get_company_workforce_demographic(company_name):
+
+@app.route('/get_company_workforce_demographic')
+def get_company_workforce_demographic():
+    company_name = request.args.get('company_name')
     url = f'https://gender-pay-gap.service.gov.uk/viewing/search-results?t=1&search={company_name}&orderBy=relevance&returnUrl=%2Fviewing%2Fsearch-results'
-
+    
     user_agent_list = [
         'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15',
         'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:77.0) Gecko/20100101 Firefox/77.0',
@@ -30,11 +37,11 @@ def get_company_workforce_demographic(company_name):
     header.update({'User-Agent': random.choice(user_agent_list)})
     sourcecode = requests.get(url, headers=header)
     soup = BeautifulSoup(sourcecode.text, 'html.parser')
-    tag = soup.find('a', attrs={'class': 'govuk-link'})
+    tag = soup.find_all('a', attrs={'class': 'govuk-link'})
 
-    if tag and tag.has_attr('href'):
+    if tag[7] and tag[7].has_attr('href'):
         # Extract the URL from the href attribute
-        url = 'https://gender-pay-gap.service.gov.uk' + tag['href']
+        url = 'https://gender-pay-gap.service.gov.uk' + tag[7]['href']
     else:
         return 'No reports found!'
 
@@ -42,7 +49,13 @@ def get_company_workforce_demographic(company_name):
     header.update({'User-Agent': random.choice(user_agent_list)})
     sourcecode = requests.get(url, headers=header)
     soup = BeautifulSoup(sourcecode.text, 'html.parser')
-    tag = soup.find('div', attrs={'class': 'column-full'})
-    print(tag)
+    tag = soup.find('section', attrs={'id': 'HourlyRateInfo'})
+    tag = tag.find_all('span')
+    if tag:
+        return tag[1].text
 
-get_company_workforce_demographic('google')
+    else:
+        return 'Unable to extract workforce demographic!'
+
+if __name__ == '__main__':
+    app.run(debug=True)
